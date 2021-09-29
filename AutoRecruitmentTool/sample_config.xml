@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <recruiters>
+        <recruiter>
+	    <name>vietnamwork</name>
+            <url>https://employer.vietnamworks.com/v2/login</url>
+            <account></account>
+            <password></password>
+        </recruiter>
+        <recruiter>
+	    <name>ITviet</name>
+            <url>https://www.google.com.vn</url>
+            <account>nguyenvana</account>
+            <password>123456</password>
+        </recruiter>
+    </recruiters>
+    <database>
+        <url></url>
+        <account></account>
+        <password></password>
+    </database>
+    <browser>
+        <default></default>
+    </browser>
+</config>

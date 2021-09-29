@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<?import org.controlsfx.control.CheckComboBox?>
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.controller.MainUI">
+    <top>
+        <AnchorPane prefHeight="48.0" style="-fx-background-color: #2a2a72#2a2a72;" BorderPane.alignment="CENTER">
+            <Button layoutX="6.0" layoutY="0.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0"
+                    style="-fx-background-color: transparent; -fx-text-fill: black;">
+                <graphic>
+                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true"
+                               style="-fx-background-color: transparent; -fx-text-fill: black;">
+                        <image>
+                            <Image url="https://www.eversafe.com.sg/wp-content/uploads/2019/12/white-menu-icon-png-8.png"/>
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Label layoutX="70.0" prefHeight="48.0" text="Hiring Board" textFill="WHITE">
+                <font>
+                    <Font size="30.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+    </top>
+    <left>
+        <GridPane prefWidth="64.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="64.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="48.0" prefHeight="48.0" valignment="CENTER" vgrow="NEVER"/>
+                <RowConstraints minHeight="48.0" prefHeight="48.0" valignment="CENTER" vgrow="NEVER"/>
+                <RowConstraints minHeight="48.0" prefHeight="48.0" valignment="CENTER" vgrow="NEVER"/>
+                <RowConstraints minHeight="48.0" prefHeight="48.0" valignment="CENTER" vgrow="ALWAYS"/>
+                <RowConstraints minHeight="48.0" prefHeight="48.0" valignment="CENTER" vgrow="ALWAYS"/>
+                <RowConstraints minHeight="48.0" prefHeight="48.0" valignment="CENTER" vgrow="ALWAYS"/>
+                <RowConstraints minHeight="48.0" prefHeight="48.0" valignment="CENTER" vgrow="NEVER"/>
+                <RowConstraints minHeight="48.0" prefHeight="48.0" valignment="CENTER" vgrow="NEVER"/>
+            </rowConstraints>
+            <children>
+                <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="64.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: black;">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="https://img.icons8.com/external-justicon-flat-justicon/50/000000/external-candidate-voting-justicon-flat-justicon-1.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="64.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: black;" GridPane.rowIndex="1">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-chart-data-science-and-cyber-security-flatart-icons-lineal-color-flatarticons.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="64.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: black;" GridPane.rowIndex="2">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="https://img.icons8.com/ios/64/000000/settings.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="64.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: black;" GridPane.rowIndex="6">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="https://img.icons8.com/ios/50/000000/help.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="64.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: black;" GridPane.rowIndex="7">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="https://img.icons8.com/ios/50/000000/user--v1.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </GridPane>
+    </left>
+    <center>
+        <GridPane prefHeight="620.0" prefWidth="1350.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="230.0" prefWidth="230.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="Infinity" minWidth="230.0" prefWidth="1100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <AnchorPane prefHeight="620.0" prefWidth="230.0" style="-fx-background-color: navy;">
+                    <Accordion maxWidth="230.0">
+                        <panes>
+                            <TitledPane text="Search from Folder">
+                                <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0">
+                                        <children>
+                                            <Label layoutX="15.0" layoutY="13.0" text="Folder"/>
+                                            <TextField fx:id="txtFolderSearch" layoutX="11.0" layoutY="39.0" prefHeight="26.0"
+                                                       prefWidth="171.0"/>
+                                            <CheckBox fx:id="checkIncludeSubFolderFolderSearch" layoutX="13.0" layoutY="82.0" mnemonicParsing="false"
+                                                      selected="true" text="Include Subfolder"/>
+                                            <Button layoutX="92.0" layoutY="126.0" mnemonicParsing="false"
+                                                    onMouseClicked="#HandleSearchFolder" prefHeight="26.0"
+                                                    prefWidth="84.0"
+                                                    style="-fx-background-color: orange; -fx-text-fill: white;"
+                                                    text="Search"/>
+                                        </children>
+                                    </AnchorPane>
+                                </content>
+                            </TitledPane>
+                            <TitledPane text="Search local DB">
+                                <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0">
+                                        <children>
+                                            <Label layoutX="7.0" layoutY="18.0" text="Status"/>
+                                            <ComboBox fx:id="cbStatusLocalSearch" layoutX="12.0" layoutY="48.0" prefHeight="27.0" prefWidth="174.0"
+                                                      promptText="Any"/>
+                                            <Label layoutX="11.0" layoutY="91.0" text="Last Status Update"/>
+                                            <ComboBox fx:id="cbLastStatusUpdateLocalSearch" layoutX="13.0" layoutY="125.0" prefHeight="27.0" prefWidth="173.0"
+                                                      promptText="1 week"/>
+                                            <Label layoutX="12.0" layoutY="169.0" text="Expected Working Location"/>
+                                            <ComboBox fx:id="cbExpectedLocationLocalSearch" layoutX="13.0" layoutY="193.0" prefHeight="27.0" prefWidth="171.0"
+                                                      promptText="Choose cities"/>
+                                            <Button layoutX="93.0" layoutY="242.0" mnemonicParsing="false"
+                                                    onMouseClicked="#HandleSearchDB" prefHeight="26.0" prefWidth="84.0"
+                                                    style="-fx-background-color: orange; -fx-text-fill: white;"
+                                                    text="Search"/>
+                                        </children>
+                                    </AnchorPane>
+                                </content>
+                            </TitledPane>
+                            <TitledPane text="Search Online">
+                                <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0">
+                                        <children>
+                                            <Label layoutX="8.0" layoutY="19.0" prefHeight="17.0" prefWidth="67.0"
+                                                   text="Source:"/>
+                                            <ComboBox fx:id="cbEmployerOnlineSearch" layoutX="90.0" layoutY="14.0" prefHeight="26.0"
+                                                      prefWidth="100.0" promptText="VNWorks"/>
+                                            <Label layoutX="8.0" layoutY="53.0" text="Keyword to Search"/>
+                                            <TextField fx:id="txtSearchKeywordOnlineSearch" layoutX="8.0" layoutY="70.0"
+                                                       prefHeight="26.0" prefWidth="180.0"/>
+                                            <Label layoutX="9.0" layoutY="103.0" text="Last Resume Update"/>
+                                            <ComboBox fx:id="cbLastResumeUpdateOnlineSearch" layoutX="10.0"
+                                                      layoutY="120.0" prefHeight="26.0" prefWidth="179.0"
+                                                      promptText="Any"/>
+                                            <Label layoutX="11.0" layoutY="165.0" prefHeight="17.0" prefWidth="111.0"
+                                                   text="Years of Experience"/>
+                                            <Label layoutX="11.0" layoutY="188.0" prefHeight="17.0" prefWidth="31.0"
+                                                   text="From"/>
+                                            <Label layoutX="104.0" layoutY="188.0" text="To"/>
+                                            <TextField fx:id="txtExperienceFromOnlineSearch" layoutX="10.0"
+                                                       layoutY="206.0" prefHeight="26.0" prefWidth="79.0"/>
+                                            <TextField fx:id="txtExperienceToOnlineSearch" layoutX="105.0"
+                                                       layoutY="206.0" prefHeight="26.0" prefWidth="83.0"/>
+                                            <Label layoutX="10.0" layoutY="240.0" text="Expected Working Location"/>
+                                            <ComboBox fx:id="cbWorkingLocationOnlineSearch" layoutX="9.0"
+                                                      layoutY="265.0" prefHeight="26.0" prefWidth="178.0"
+                                                      promptText="Choose cities"/>
+                                            <CheckBox layoutX="10.0" layoutY="303.0" mnemonicParsing="false"
+                                                      selected="true" text="Skip &quot;viewed&quot; resume"/>
+                                            <Label layoutX="14.0" layoutY="327.0" text="Sort By"/>
+                                            <ComboBox fx:id="cbLatestResumeUpdateOnlineSearch" layoutX="9.0"
+                                                      layoutY="350.0" prefHeight="26.0" prefWidth="181.0"
+                                                      promptText="Latest Resume Update"/>
+                                            <Label layoutX="20.0" layoutY="387.0" text="Show First"/>
+                                            <TextField alignment="CENTER_RIGHT" layoutX="107.0" layoutY="383.0"
+                                                       prefHeight="26.0" prefWidth="78.0" text="100"/>
+                                            <Button layoutX="104.0" layoutY="417.0" mnemonicParsing="false"
+                                                    onMouseClicked="#HandleSearchOnline" prefHeight="26.0"
+                                                    prefWidth="84.0"
+                                                    style="-fx-background-color: orange; -fx-text-fill: white;"
+                                                    text="Search"/>
+                                            <Button layoutX="7.0" layoutY="417.0" mnemonicParsing="false"
+                                                    prefHeight="26.0" prefWidth="84.0"
+                                                    style="-fx-background-color: transparent;" text="Reset Filter"/>
+                                            <Label layoutX="120.0" layoutY="53.0" text="*" textFill="RED"/>
+                                            <Label layoutX="85.0" layoutY="387.0" text="*" textFill="RED"/>
+                                        </children>
+                                    </AnchorPane>
+                                </content>
+                            </TitledPane>
+                        </panes>
+                        <padding>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        </padding>
+                    </Accordion>
+                </AnchorPane>
+                <GridPane prefHeight="620.0" prefWidth="477.0" GridPane.columnIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="Infinity" minHeight="500.0" prefHeight="570.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <GridPane>
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <children>
+                                <CheckComboBox fx:id="cbTitlesTop" prefWidth="125.0" title="Title" GridPane.columnIndex="0"/>
+                                <CheckComboBox fx:id="cbExpTop" prefWidth="125.0" title="Experience" GridPane.columnIndex="1"/>
+                                <CheckComboBox fx:id="cbStatusTop" prefWidth="125.0" title="Status" GridPane.columnIndex="2"/>
+                                <CheckComboBox fx:id="cbLabelTop" prefWidth="125.0" title="Label" GridPane.columnIndex="3"/>
+                                <CheckComboBox fx:id="cbLocationTop" prefWidth="125.0" title="Location" GridPane.columnIndex="4"/>
+                                <CheckComboBox fx:id="cbCVDateTop" prefWidth="125.0" title="CV Date" GridPane.columnIndex="5"/>
+                                <CheckComboBox fx:id="cbReferralTop" prefWidth="125.0" title="Referral" GridPane.columnIndex="6"/>
+                                <TextField fx:id="txtSearchTop" prefWidth="125.0" promptText="Search Name"
+                                           style="-fx-border-width: 0.5px; -fx-border-radius: 50px; -fx-background-color: white; -fx-border-color: gray;"
+                                           GridPane.columnIndex="7"/>
+                            </children>
+                            <padding>
+                                <Insets left="5.0" right="5.0"/>
+                            </padding>
+                        </GridPane>
+                        <TableView fx:id="tbData" editable="true" prefHeight="540.0" prefWidth="430.0"
+                                   GridPane.rowIndex="1">
+                            <columns>
+                                <!--<TableColumn fx:id="id" maxWidth="30" minWidth="30" prefWidth="75.0" text="ID"/>-->
+                                <TableColumn fx:id="name" editable="true" prefWidth="75.0" text="Name"/>
+                                <TableColumn fx:id="job" prefWidth="75.0" text="Job Title"/>
+                                <TableColumn fx:id="experience" prefWidth="75.0" text="Experience"/>
+                                <TableColumn fx:id="cv_link" prefWidth="75.0" text="CV Link"/>
+                                <TableColumn fx:id="skills" prefWidth="75.0" text="Brief Skills"/>
+                                <TableColumn fx:id="status" prefWidth="75.0" text="Latest Status"/>
+                                <TableColumn fx:id="comment" prefWidth="75.0" text="Latest Comment"/>
+                                <TableColumn fx:id="user" prefWidth="75.0" text="Updated By"/>
+                                <TableColumn fx:id="label" prefWidth="75.0" text="Label"/>
+                                <TableColumn fx:id="cv_date" prefWidth="75.0" text="CV Date"/>
+                                <TableColumn fx:id="can_location" prefWidth="75.0" text="Location"/>
+                                <TableColumn fx:id="referral" prefWidth="75.0" text="Referral"/>
+                                <TableColumn fx:id="phone" prefWidth="75.0" text="Phone"/>
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                            </columnResizePolicy>
+                            <padding>
+                                <Insets bottom="5.0" right="5.0"/>
+                            </padding>
+                        </TableView>
+                    </children>
+                </GridPane>
+            </children>
+        </GridPane>
+    </center>
+    <bottom>
+        <!--Bottom is empty-->
+        <AnchorPane prefHeight="0.0" prefWidth="0.0" BorderPane.alignment="CENTER"/>
+    </bottom>
+    <right>
+        <!--Right is empty-->
+        <AnchorPane prefHeight="0.0" prefWidth="0.0" BorderPane.alignment="CENTER"/>
+    </right>
+</BorderPane>
