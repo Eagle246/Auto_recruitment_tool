@@ -426,7 +426,7 @@ public class Recruitment_VietNamWork extends Recruitment_Online {
                     //checkbox viewed no select
                     if (skip_viewed.isEmpty()) {
                         try {
-                            all_print_viewd(2);
+                            all_print_viewd(25);
                             Close();
                         } catch (Exception ex) {
                             Logger.getLogger(Recruitment_VietNamWork.class.getName()).log(Level.SEVERE, null, ex);

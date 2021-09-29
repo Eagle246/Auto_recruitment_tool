@@ -26,42 +26,42 @@
                <children>
                   <Pane prefHeight="355.0" prefWidth="666.0" styleClass="pane_detail">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="14.0" text="Full name:" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="14.0" text="Brief skills: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="59.0" text="Position: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="104.0" text="Latest status: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="104.0" text="Lasted company:" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="149.0" text="Lasted comment: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="194.0" prefHeight="20.0" prefWidth="123.0" text="Years of experience: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="194.0" text="CV Date: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="239.0" text="Expected salary: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="239.0" text="Location:" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="284.0" text="Locations:" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="284.0" text="Phone: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" layoutY="15.0" text="Gender: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" layoutY="59.0" text="Gender: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="149.0" text="Expected job level:" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" layoutY="194.0" text="Updated by:" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
@@ -71,47 +71,77 @@
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_full_name" alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="14.0" text="Nguyễn Văn A" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label fx:id="lbl_skills" alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="14.0" text="Java, Boostrap, Test Manual, Test Auto" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_gender" alignment="CENTER" contentDisplay="CENTER" layoutX="387.0" layoutY="15.0" text="Nam" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label fx:id="lbl_gender" alignment="CENTER" contentDisplay="CENTER" layoutX="387.0" layoutY="59.0" text="Nam" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_position" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="59.0" text="Test Manual" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label fx:id="lbl_status" alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="104.0" text="New" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_joblv" alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="149.0" text="Test Manual" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label fx:id="lbl_updBy" alignment="CENTER" contentDisplay="CENTER" layoutX="413.0" layoutY="194.0" text="Thuy" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_year" alignment="CENTER" contentDisplay="CENTER" layoutX="152.0" layoutY="194.0" text="3 Years" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label fx:id="lbl_cvdate" alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="194.0" text="2021-09-29" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_company" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="104.0" text="Logigear Company" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label fx:id="lbl_comment" alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="149.0" text="comment..............." textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_salary" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="239.0" text="1000$" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label fx:id="lbl_location" alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="239.0" text="Hồ Chí Minh City" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_location" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="284.0" text="Hồ Chí Minh, Hà Nội" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label fx:id="lbl_phone" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="284.0" text="0123456789" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_src" alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="329.0" text="http://........................................................" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                        <Label fx:id="lbl_src" alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="329.0" text="http://.............................................................................." textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                           <font>
+                              <Font name="System Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" layoutY="284.0" text="Referral: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                           <font>
+                              <Font name="System Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="59.0" text="Year experience: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                           <font>
+                              <Font name="System Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_year" alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="59.0" text="3 Years" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                           <font>
+                              <Font name="System Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_referral" alignment="CENTER" contentDisplay="CENTER" layoutX="390.0" layoutY="284.0" text="VietNamwork" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                           <font>
+                              <Font name="System Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" layoutY="104.0" text="Label: " textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                           <font>
+                              <Font name="System Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_label" alignment="CENTER" contentDisplay="CENTER" layoutX="372.0" layoutY="104.0" text="AI" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                            <font>
                               <Font name="System Italic" size="14.0" />
                            </font>
@@ -144,12 +174,12 @@
                   </ImageView>
                   <Label fx:id="lbl_name" alignment="CENTER" contentDisplay="CENTER" layoutX="172.0" layoutY="20.0" text="Nguyễn Văn A" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
-                        <Font name="System Italic" size="28.0" />
+                        <Font name="System Italic" size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbl_pos" alignment="CENTER" contentDisplay="CENTER" layoutX="172.0" layoutY="69.0" text="Test Manual" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
+                  <Label fx:id="lbl_jobtitle" alignment="CENTER" contentDisplay="CENTER" layoutX="172.0" layoutY="69.0" text="Test Manual" textFill="#1d1919" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
-                        <Font name="System Italic" size="14.0" />
+                        <Font name="System Italic" size="20.0" />
                      </font>
                   </Label>
                </children>

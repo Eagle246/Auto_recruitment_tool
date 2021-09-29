@@ -18,10 +18,8 @@ import javafx.scene.control.Label;
  */
  
 public class DetailCV implements Initializable {
-    /**
-     * Initializes the controller class.
-     */
-@FXML
+    
+    @FXML
     private Label lbl_skills;
 
     @FXML
@@ -62,9 +60,9 @@ public class DetailCV implements Initializable {
 
     @FXML
     private Label lbl_jobtitle;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
        view();
     }    
     
