@@ -335,7 +335,8 @@ public class MainUI implements Initializable {
                         try {
                             viewCandidateModel=row.getItem();       
                             //System.out.println(row.getItem());   
-                            URL url = new File("src/main/java/gui/page/DetailCV.fxml").toURI().toURL();
+                            //URL url = new File("src/main/java/gui/page/DetailCV.fxml").toURI().toURL();
+                            URL url = new File("src/main/java/gui/page/DetailCandidate.fxml").toURI().toURL();
                             URL css = new File("src/main/java/gui/App.css").toURI().toURL();
                             Parent root = FXMLLoader.load(url);
                             Stage primaryStage = new Stage();
