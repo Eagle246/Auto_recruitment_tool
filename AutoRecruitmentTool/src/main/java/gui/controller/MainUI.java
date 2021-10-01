@@ -332,26 +332,11 @@ public class MainUI implements Initializable {
                 viewItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
-                        try {
-                            viewCandidateModel=row.getItem();       
-                            //System.out.println(row.getItem());   
-                            //URL url = new File("src/main/java/gui/page/DetailCV.fxml").toURI().toURL();
-                            URL url = new File("src/main/java/gui/page/DetailCandidate.fxml").toURI().toURL();
-                            URL css = new File("src/main/java/gui/App.css").toURI().toURL();
-                            Parent root = FXMLLoader.load(url);
-                            Stage primaryStage = new Stage();
-                            primaryStage.setTitle("View Detail CV management");  
-                            Scene main = new Scene(root, 1150, 620);
-                            main.getStylesheets().add(css.toExternalForm());
-                            primaryStage.setScene(main);
-                            primaryStage.show();
-                            System.out.println("view detail");
-                        } catch (MalformedURLException ex) {
-                            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (IOException ex) {
-                            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                       DetailCandidate view= new DetailCandidate(row.getItem());
+                       view.Show();
                     }
+
+                    
                 });
                 MenuItem editItem = new MenuItem("Edit");
                 MenuItem bulkchangeItem = new MenuItem("Bulk Change");

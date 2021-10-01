@@ -5,19 +5,39 @@
  */
 package gui.controller;
 
+import static gui.controller.MainUI.viewCandidateModel;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import objmodels.CandiidateModel;
 
 /**
  *
  * @author LE THUY
  */
-public class DetailCandidate implements Initializable{
+public class DetailCandidate implements Initializable {
+
+    @FXML
+    private Label lbl_name;
+
+    @FXML
+    private Label lbl_jobtitle;
+
     @FXML
     private Label lbl_gender;
 
@@ -54,35 +74,71 @@ public class DetailCandidate implements Initializable{
     @FXML
     private TextField input_referral;
 
-    @FXML
-    private Label lbl_name;
+    private static CandiidateModel view1 = null;
 
-    @FXML
-    private Label lbl_jobtitle;
-    
+    public DetailCandidate() {
+    }
+
+    public DetailCandidate(CandiidateModel view) {
+        view1 = view;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       view();
+        Display();
     }
-    private void view(){
-        lbl_name.setText(MainUI.viewCandidateModel.getName());   
-        lbl_jobtitle.setText(MainUI.viewCandidateModel.getJob());
-        input_skills.setText(MainUI.viewCandidateModel.getSkills()); 
-        input_year.setText(String.valueOf(MainUI.viewCandidateModel.getExperience())+" Year");
-        input_status.setText(MainUI.viewCandidateModel.getStatus()); 
-        input_cmt.setText(MainUI.viewCandidateModel.getComment()); 
-        input_cvdate.setText(MainUI.viewCandidateModel.getCv_date());   
-        input_location.setText(MainUI.viewCandidateModel.getCan_location());
-        input_phone.setText(String.valueOf(MainUI.viewCandidateModel.getPhone())); 
-        input_referral.setText(MainUI.viewCandidateModel.getReferral()); 
-        input_updBy.setText(MainUI.viewCandidateModel.getUser()); 
-        input_label.setText(MainUI.viewCandidateModel.getLabel()); 
-        input_src.setText(MainUI.viewCandidateModel.getCv_link()); 
+
+    public void Display() {
+        lbl_name.setText(view1.getName());
+        lbl_jobtitle.setText(view1.getJob());
+        input_skills.setText(view1.getSkills());
+        input_year.setText(String.valueOf(view1.getExperience()) + " Year");
+        input_status.setText(view1.getStatus());
+        input_cmt.setText(view1.getComment());
+        input_cvdate.setText(view1.getCv_date());
+        input_location.setText(view1.getCan_location());
+        input_phone.setText(String.valueOf(view1.getPhone()));
+        input_referral.setText(view1.getReferral());
+        input_updBy.setText(view1.getUser());
+        input_label.setText(view1.getLabel());
+        input_src.setText(view1.getCv_link());
     }
+
     @FXML
     void Edit(MouseEvent event) {
         System.out.println(input_status.getText());
         System.out.println(input_updBy.getText());
     }
-    
+
+    public void Show() {
+        try {
+            URL url = new File("src/main/java/gui/page/DetailCandidate.fxml").toURI().toURL();
+            URL css = new File("src/main/java/gui/App.css").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("View Detail CV management");
+            Scene main = new Scene(root, 1150, 620);
+            main.getStylesheets().add(css.toExternalForm());
+            primaryStage.setScene(main);
+            primaryStage.show();
+            //-------------
+
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void exit(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit");
+        alert.setHeaderText("You're about to logout!");
+        alert.setContentText("Do you want to save before exiting?");
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            System.out.println("You successfully logged out!");
+            stage.close();
+        }
+    }
+
 }
