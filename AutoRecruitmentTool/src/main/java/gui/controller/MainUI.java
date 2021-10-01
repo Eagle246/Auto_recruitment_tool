@@ -316,7 +316,7 @@ public class MainUI implements Initializable {
         tbData.setItems(lstCandidates);
         tbData.refresh();
     }
-
+    public static String flag="";
     private void CreatContextMenu() {
         tbData.setRowFactory(new Callback<TableView<CandiidateModel>, TableRow<CandiidateModel>>() {
             @Override
@@ -332,13 +332,19 @@ public class MainUI implements Initializable {
                 viewItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
-                       DetailCandidate view= new DetailCandidate(row.getItem());
-                       view.Show();
-                    }
-
-                    
+                        flag="View";
+                        new DetailCandidate(row.getItem()).Show();  
+                    }   
                 });
                 MenuItem editItem = new MenuItem("Edit");
+                editItem.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent t) {
+                        flag="Edit";
+                       new DetailCandidate(row.getItem()).Show();
+                       
+                    }   
+                });
                 MenuItem bulkchangeItem = new MenuItem("Bulk Change");
                 MenuItem exportItem = new MenuItem("Export Excel");
                 rowMenu.getItems().addAll(viewItem, editItem, bulkchangeItem, exportItem);

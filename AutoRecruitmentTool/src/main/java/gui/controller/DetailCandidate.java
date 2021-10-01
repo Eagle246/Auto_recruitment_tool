@@ -85,7 +85,12 @@ public class DetailCandidate implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Display();
+        if(MainUI.flag.equalsIgnoreCase("View")){
+            Display_NoEdit();
+            Display();
+        }else{
+            Display();
+        }
     }
 
     public void Display() {
@@ -104,10 +109,32 @@ public class DetailCandidate implements Initializable {
         input_src.setText(view1.getCv_link());
     }
 
-    @FXML
-    void Edit(MouseEvent event) {
-        System.out.println(input_status.getText());
-        System.out.println(input_updBy.getText());
+    public void Display_NoEdit() {
+        lbl_name.setText(view1.getName());
+        lbl_jobtitle.setText(view1.getJob());
+        input_skills.setText(view1.getSkills());
+        input_year.setText(String.valueOf(view1.getExperience()) + " Year");
+        input_status.setText(view1.getStatus());
+        input_cmt.setText(view1.getComment());
+        input_cvdate.setText(view1.getCv_date()); 
+        input_location.setText(view1.getCan_location());
+        input_phone.setText(String.valueOf(view1.getPhone()));
+        input_referral.setText(view1.getReferral());
+        input_updBy.setText(view1.getUser());
+        input_label.setText(view1.getLabel());
+        input_src.setText(view1.getCv_link());
+        //-----------
+        input_cmt.setEditable(false);
+        input_year.setEditable(false);
+        input_status.setEditable(false);
+        input_phone.setEditable(false);
+        input_cvdate.setEditable(false);
+        input_referral.setEditable(false);
+        input_updBy.setEditable(false);
+        input_src.setEditable(false);
+        input_skills.setEditable(false);
+        input_label.setEditable(false);
+        input_location.setEditable(false);
     }
 
     public void Show() {
@@ -122,7 +149,11 @@ public class DetailCandidate implements Initializable {
             primaryStage.setScene(main);
             primaryStage.show();
             //-------------
-
+            primaryStage.setOnCloseRequest(event
+                    -> {
+                event.consume();
+                exit(primaryStage);
+            });
         } catch (MalformedURLException ex) {
             Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -133,12 +164,19 @@ public class DetailCandidate implements Initializable {
     public void exit(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit");
-        alert.setHeaderText("You're about to logout!");
+        alert.setHeaderText("You're about to exit!");
         alert.setContentText("Do you want to save before exiting?");
         if (alert.showAndWait().get() == ButtonType.OK) {
             System.out.println("You successfully logged out!");
             stage.close();
         }
+    }
+
+    public CandiidateModel save() {
+        CandiidateModel candidate = null;
+        String status = input_status.getText();
+        String phone = input_phone.getText();
+        return candidate;
     }
 
 }
