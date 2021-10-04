@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -75,6 +76,9 @@ public class DetailCandidate implements Initializable {
 
     @FXML
     private TextField input_referral;
+    
+    @FXML
+    private Button btnEdit;
 
     private static CandiidateModel view1 = null;
 
@@ -137,6 +141,7 @@ public class DetailCandidate implements Initializable {
         input_skills.setEditable(false);
         input_label.setEditable(false);
         input_location.setEditable(false);
+        btnEdit.setVisible(false);
     }
 
     public void Show() {
