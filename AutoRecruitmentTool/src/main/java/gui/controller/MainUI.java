@@ -107,6 +107,7 @@ public class MainUI implements Initializable {
     //Declare Table View ------------------------
     @FXML
     private TableView<CandiidateModel> tbData;
+    //public static TableView<CandiidateModel> tbData;
     @FXML
     public TableColumn<CandiidateModel, Integer> id;
     @FXML
@@ -138,7 +139,8 @@ public class MainUI implements Initializable {
 
     // Variable ------------------------------------------------------------
     private ObservableList<CandiidateModel> lstCandidates = null;
-    public static CandiidateModel viewCandidateModel=null;
+    //public static ObservableList<CandiidateModel> lstCandidates = null;
+    public static CandiidateModel viewCandidateModel = null;
     //-----------------------------------------------------------------------
 
     @Override
@@ -163,15 +165,13 @@ public class MainUI implements Initializable {
         name.setCellFactory(TextFieldTableCell.forTableColumn());
         name.setOnEditCommit((TableColumn.CellEditEvent<CandiidateModel, String> t) -> {
             ((CandiidateModel) t.getTableView().getItems().get(
-                    t.getTablePosition().getRow())
-            ).setName(t.getNewValue());
+                    t.getTablePosition().getRow())).setName(t.getNewValue());
         });
         job.setCellValueFactory(new PropertyValueFactory<>("job"));
         job.setCellFactory(TextFieldTableCell.forTableColumn());
         job.setOnEditCommit((TableColumn.CellEditEvent<CandiidateModel, String> t) -> {
             ((CandiidateModel) t.getTableView().getItems().get(
-                    t.getTablePosition().getRow())
-            ).setJob(t.getNewValue());
+                    t.getTablePosition().getRow())).setJob(t.getNewValue());
         });
         experience.setCellValueFactory(new PropertyValueFactory<>("experience"));
         experience.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -180,64 +180,55 @@ public class MainUI implements Initializable {
         cv_link.setCellFactory(TextFieldTableCell.forTableColumn());
         cv_link.setOnEditCommit((TableColumn.CellEditEvent<CandiidateModel, String> t) -> {
             ((CandiidateModel) t.getTableView().getItems().get(
-                    t.getTablePosition().getRow())
-            ).setCv_link(t.getNewValue());
+                    t.getTablePosition().getRow())).setCv_link(t.getNewValue());
         });
         skills.setCellValueFactory(new PropertyValueFactory<>("skills"));
         skills.setCellFactory(TextFieldTableCell.forTableColumn());
         skills.setOnEditCommit((TableColumn.CellEditEvent<CandiidateModel, String> t) -> {
             ((CandiidateModel) t.getTableView().getItems().get(
-                    t.getTablePosition().getRow())
-            ).setSkills(t.getNewValue());
+                    t.getTablePosition().getRow())).setSkills(t.getNewValue());
         });
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
         status.setCellFactory(TextFieldTableCell.forTableColumn());
         status.setOnEditCommit((TableColumn.CellEditEvent<CandiidateModel, String> t) -> {
             ((CandiidateModel) t.getTableView().getItems().get(
-                    t.getTablePosition().getRow())
-            ).setStatus(t.getNewValue());
+                    t.getTablePosition().getRow())).setStatus(t.getNewValue());
         });
         comment.setCellValueFactory(new PropertyValueFactory<>("comment"));
         comment.setCellFactory(TextFieldTableCell.forTableColumn());
         comment.setOnEditCommit((TableColumn.CellEditEvent<CandiidateModel, String> t) -> {
             ((CandiidateModel) t.getTableView().getItems().get(
-                    t.getTablePosition().getRow())
-            ).setComment(t.getNewValue());
+                    t.getTablePosition().getRow())).setComment(t.getNewValue());
         });
         user.setCellValueFactory(new PropertyValueFactory<>("user"));
         user.setCellFactory(TextFieldTableCell.forTableColumn());
         user.setOnEditCommit((TableColumn.CellEditEvent<CandiidateModel, String> t) -> {
             ((CandiidateModel) t.getTableView().getItems().get(
-                    t.getTablePosition().getRow())
-            ).setUser(t.getNewValue());
+                    t.getTablePosition().getRow())).setUser(t.getNewValue());
         });
         label.setCellValueFactory(new PropertyValueFactory<>("label"));
         label.setCellFactory(TextFieldTableCell.forTableColumn());
         label.setOnEditCommit((TableColumn.CellEditEvent<CandiidateModel, String> t) -> {
             ((CandiidateModel) t.getTableView().getItems().get(
-                    t.getTablePosition().getRow())
-            ).setLabel(t.getNewValue());
+                    t.getTablePosition().getRow())).setLabel(t.getNewValue());
         });
         cv_date.setCellValueFactory(new PropertyValueFactory<>("cv_date"));
         cv_date.setCellFactory(TextFieldTableCell.forTableColumn());
         cv_date.setOnEditCommit((TableColumn.CellEditEvent<CandiidateModel, String> t) -> {
             ((CandiidateModel) t.getTableView().getItems().get(
-                    t.getTablePosition().getRow())
-            ).setCv_date(t.getNewValue());
+                    t.getTablePosition().getRow())).setCv_date(t.getNewValue());
         });
         can_location.setCellValueFactory(new PropertyValueFactory<>("can_location"));
         can_location.setCellFactory(TextFieldTableCell.forTableColumn());
         can_location.setOnEditCommit((TableColumn.CellEditEvent<CandiidateModel, String> t) -> {
             ((CandiidateModel) t.getTableView().getItems().get(
-                    t.getTablePosition().getRow())
-            ).setLocation(t.getNewValue());
+                    t.getTablePosition().getRow())).setLocation(t.getNewValue());
         });
         referral.setCellValueFactory(new PropertyValueFactory<>("referral"));
         referral.setCellFactory(TextFieldTableCell.forTableColumn());
         referral.setOnEditCommit((TableColumn.CellEditEvent<CandiidateModel, String> t) -> {
             ((CandiidateModel) t.getTableView().getItems().get(
-                    t.getTablePosition().getRow())
-            ).setReferral(t.getNewValue());
+                    t.getTablePosition().getRow())).setReferral(t.getNewValue());
         });
         phone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         phone.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -297,10 +288,12 @@ public class MainUI implements Initializable {
     }
 
     private List addAllCheck(List data) {
-        List temp = new ArrayList(data) {{
-            // cannot remove "None" since refreshData is broken
-            add(0, "all");
-        }};
+        List temp = new ArrayList(data) {
+            {
+                // cannot remove "None" since refreshData is broken
+                add(0, "all");
+            }
+        };
         return temp;
     }
 
@@ -316,7 +309,8 @@ public class MainUI implements Initializable {
         tbData.setItems(lstCandidates);
         tbData.refresh();
     }
-    public static String flag="";
+    public static String flag = "";
+
     private void CreatContextMenu() {
         tbData.setRowFactory(new Callback<TableView<CandiidateModel>, TableRow<CandiidateModel>>() {
             @Override
@@ -332,22 +326,28 @@ public class MainUI implements Initializable {
                 viewItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
-                        flag="View";
-                        new DetailCandidate(row.getItem()).Show();  
-                    }   
+                        flag = "View";
+                        new DetailCandidate(row.getItem()).Show();
+                    }
                 });
                 MenuItem editItem = new MenuItem("Edit");
                 editItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
-                        flag="Edit";
-                       new DetailCandidate(row.getItem()).Show();
-                       
-                    }   
+                        flag = "Edit";                   
+                        new DetailCandidate(row.getItem()).Show();
+                    }
                 });
                 MenuItem bulkchangeItem = new MenuItem("Bulk Change");
                 MenuItem exportItem = new MenuItem("Export Excel");
-                rowMenu.getItems().addAll(viewItem, editItem, bulkchangeItem, exportItem);
+                MenuItem refreshItem = new MenuItem("Refresh");
+                refreshItem.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent t) {
+                        refreshData();
+                    }
+                });
+                rowMenu.getItems().addAll(viewItem, editItem, bulkchangeItem, exportItem,refreshItem);
                 row.contextMenuProperty().bind(
                         Bindings.when(Bindings.isNotNull(row.itemProperty()))
                                 .then(rowMenu)
@@ -357,7 +357,7 @@ public class MainUI implements Initializable {
         }
         );
     }
-    
+
     //Action control --------------------------------------------------
     @FXML
     void HandleSearchDB(MouseEvent event) {
@@ -374,19 +374,19 @@ public class MainUI implements Initializable {
     @FXML
     void HandleSearchOnline(MouseEvent event) {
         System.out.println("HandleSearchOnline!");
-        String text_source=cbEmployerOnlineSearch.getSelectionModel().getSelectedItem();
-        String keysearch=txtSearchKeywordOnlineSearch.getText();
-        String txt_lstresumeupd=cbLastResumeUpdateOnlineSearch.getSelectionModel().getSelectedItem();
-        String expFrom=txtExperienceFromOnlineSearch.getText();
-        String expTo=txtExperienceToOnlineSearch.getText();
-        String location=cbWorkingLocationOnlineSearch.getSelectionModel().getSelectedItem();
+        String text_source = cbEmployerOnlineSearch.getSelectionModel().getSelectedItem();
+        String keysearch = txtSearchKeywordOnlineSearch.getText();
+        String txt_lstresumeupd = cbLastResumeUpdateOnlineSearch.getSelectionModel().getSelectedItem();
+        String expFrom = txtExperienceFromOnlineSearch.getText();
+        String expTo = txtExperienceToOnlineSearch.getText();
+        String location = cbWorkingLocationOnlineSearch.getSelectionModel().getSelectedItem();
         Recruitment_Online orecruiter_onl;
         if (text_source.equalsIgnoreCase("VietNamWork")) {
-            orecruiter_onl = new Recruitment_VietNamWork(Utils.find(text_source),keysearch,"","",location,text_source);
-            orecruiter_onl.Filter(); 
+            orecruiter_onl = new Recruitment_VietNamWork(Utils.find(text_source), keysearch, "", "", location, text_source);
+            orecruiter_onl.Filter();
         }
         //Data.Update();
         refreshData();
-       
+
     }
 }
