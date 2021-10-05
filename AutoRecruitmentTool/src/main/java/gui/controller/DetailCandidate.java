@@ -6,12 +6,10 @@
 package gui.controller;
 
 import datacenter.Data;
-import static gui.controller.MainUI.viewCandidateModel;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,11 +19,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import objmodels.CandiidateModel;
 
@@ -76,11 +73,10 @@ public class DetailCandidate implements Initializable {
 
     @FXML
     private TextField input_referral;
-    
-    @FXML
-    private Button btnEdit;
 
     private static CandiidateModel view1 = null;
+    public static String flag_save = "";
+    private static CandiidateModel edit = null;
 
     public DetailCandidate() {
     }
@@ -91,7 +87,6 @@ public class DetailCandidate implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("3");
         if (MainUI.flag.equalsIgnoreCase("View")) {
             Display_NoEdit();
         } else {
@@ -140,8 +135,7 @@ public class DetailCandidate implements Initializable {
         input_src.setEditable(false);
         input_skills.setEditable(false);
         input_label.setEditable(false);
-        input_location.setEditable(false);
-        btnEdit.setVisible(false);
+        input_location.setEditable(false); 
     }
 
     public void Show() {
@@ -155,7 +149,6 @@ public class DetailCandidate implements Initializable {
             main.getStylesheets().add(css.toExternalForm());
             primaryStage.setScene(main);
             primaryStage.show();
-            //-------------
             primaryStage.setOnCloseRequest(event
                     -> {
                 event.consume();
@@ -176,15 +169,18 @@ public class DetailCandidate implements Initializable {
         alert.setContentText("Do you want to save before exiting?");
         if (alert.showAndWait().get() == ButtonType.OK) {
             System.out.println("You successfully logged out!");
-            //EditCandidate(save());
+            flag_save = "OK";
+            EditCandidate(edit);
             stage.close();
-            //EditCandidate(save());
+
         }
     }
 
     @FXML
-    void Edit(MouseEvent event) {
-        EditCandidate(save());
+    void Change_txt(KeyEvent event) {
+        edit = save();
+        //System.out.println(edit.toString());
+
     }
 
     public CandiidateModel save() {

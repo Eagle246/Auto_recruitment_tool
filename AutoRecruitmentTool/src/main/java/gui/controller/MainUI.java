@@ -156,6 +156,9 @@ public class MainUI implements Initializable {
         ccbTitleUpdateListener(cbCVDateTop, "CV Date");
         ccbTitleUpdateListener(cbReferralTop, "Referral");
         CreatContextMenu();
+        if(DetailCandidate.flag_save.equalsIgnoreCase("OK")){
+            refreshData();
+        }
     }
 
     private void initTableView() {
@@ -309,13 +312,14 @@ public class MainUI implements Initializable {
         tbData.setItems(lstCandidates);
         tbData.refresh();
     }
+    
     public static String flag = "";
 
     private void CreatContextMenu() {
         tbData.setRowFactory(new Callback<TableView<CandiidateModel>, TableRow<CandiidateModel>>() {
             @Override
             public TableRow<CandiidateModel> call(TableView<CandiidateModel> p) {
-                final TableRow<CandiidateModel> row = new TableRow<>();
+                final TableRow<CandiidateModel> row = new TableRow<>();               
                 final ContextMenu rowMenu = new ContextMenu();
                 ContextMenu tableMenu = p.getContextMenu();
                 if (tableMenu != null) {
@@ -327,17 +331,18 @@ public class MainUI implements Initializable {
                     @Override
                     public void handle(ActionEvent t) {
                         flag = "View";
-                        new DetailCandidate(row.getItem()).Show();
+                        new DetailCandidate(row.getItem()).Show(); 
                     }
                 });
                 MenuItem editItem = new MenuItem("Edit");
                 editItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
-                        flag = "Edit";                   
-                        new DetailCandidate(row.getItem()).Show();
+                        flag = "Edit";    
+                        new DetailCandidate(row.getItem()).Show();   
                     }
                 });
+                
                 MenuItem bulkchangeItem = new MenuItem("Bulk Change");
                 MenuItem exportItem = new MenuItem("Export Excel");
                 MenuItem refreshItem = new MenuItem("Refresh");
@@ -353,8 +358,8 @@ public class MainUI implements Initializable {
                                 .then(rowMenu)
                                 .otherwise((ContextMenu) null));
                 return row;
-            }
-        }
+            } 
+        }       
         );
     }
 

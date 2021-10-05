@@ -25,7 +25,7 @@ public class App extends Application {
         Scene main = new Scene(root, 1150, 620);
         main.getStylesheets().add(css.toExternalForm());
         primaryStage.setScene(main);
-        primaryStage.show();
+        primaryStage.show(); 
     }
 
     public static void main(String[] args) {

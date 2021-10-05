@@ -19,6 +19,7 @@ public class Main {
         InitApp();
         new SelServices();
         Application.launch(App.class, args);
+        
     }
     
     private static void InitApp(){
