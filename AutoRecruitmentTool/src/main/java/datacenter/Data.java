@@ -5,6 +5,7 @@
  */
 package datacenter;
 
+import gui.controller.DetailCandidate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,7 +37,6 @@ public class Data {
     public static List<Candidate> lstCandidates = new ArrayList<>(); ////
     
     public static List<CandiidateModel> lstCandidateModel = new ArrayList<>();
-    
 
      
     //Load Defintion XML to get lstRecruiter, lstLocators, lstTitles, lstCVUpdate
@@ -55,20 +55,16 @@ public class Data {
        lstResumeUpd.put("2 month(s)", "60");
        lstResumeUpd.put("6 month(s)", "180");
        lstResumeUpd.put("12 month(s)", "360");
-       
        lstTitles.addAll(Arrays.asList("dgdfgfdg","tttt"));
-       
-       
+     
        //test ----------------------
-       
           lstCandidateModel.addAll(Arrays.asList(
-                new CandiidateModel(1, "Nhac", "Developer", 3, "google", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890),
-                new CandiidateModel(2, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890),
-                new CandiidateModel(3, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890),
-                new CandiidateModel(4, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890)
+                new CandiidateModel(1, "Nhac", "Developer", 3, "google", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890,"false",null),
+                new CandiidateModel(2, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890,"false",null),
+                new CandiidateModel(3, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890,"false",null),
+                new CandiidateModel(4, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890,"false",null)
         ));
        //------------------------------
-     
     }
     
      public static void Update(){

@@ -74,56 +74,57 @@ public class DetailCandidate implements Initializable {
     @FXML
     private TextField input_referral;
 
-    private static CandiidateModel view1 = null;
-    public static String flag_save = "";
-    private static CandiidateModel edit = null;
+    private static CandiidateModel cv = null;
+    private static CandiidateModel cvedit = null;
+    private static boolean edited;
 
     public DetailCandidate() {
     }
 
-    public DetailCandidate(CandiidateModel view) {
-        view1 = view;
+    public DetailCandidate(CandiidateModel cv, boolean edited) {
+        this.cv = cv;
+        this.edited = edited;
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        if (MainUI.flag.equalsIgnoreCase("View")) {
-            Display_NoEdit();
-        } else {
+    public void initialize(URL url, ResourceBundle rb) { 
+        if (edited == true) {
             Display();
+        } else {
+            Display_NoEdit();
         }
     }
 
     public void Display() {
-        lbl_name.setText(view1.getName());
-        lbl_jobtitle.setText(view1.getJob());
-        input_skills.setText(view1.getSkills());
-        input_year.setText(String.valueOf(view1.getExperience()) + " Year");
-        input_status.setText(view1.getStatus());
-        input_cmt.setText(view1.getComment());
-        input_cvdate.setText(view1.getCv_date());
-        input_location.setText(view1.getCan_location());
-        input_phone.setText(String.valueOf(view1.getPhone()));
-        input_referral.setText(view1.getReferral());
-        input_updBy.setText(view1.getUser());
-        input_label.setText(view1.getLabel());
-        input_src.setText(view1.getCv_link());
+        lbl_name.setText(cv.getName());
+        lbl_jobtitle.setText(cv.getJob());
+        input_skills.setText(cv.getSkills());
+        input_year.setText(String.valueOf(cv.getExperience()));
+        input_status.setText(cv.getStatus());
+        input_cmt.setText(cv.getComment());
+        input_cvdate.setText(cv.getCv_date());
+        input_location.setText(cv.getCan_location());
+        input_phone.setText(String.valueOf(cv.getPhone()));
+        input_referral.setText(cv.getReferral());
+        input_updBy.setText(cv.getUser());
+        input_label.setText(cv.getLabel());
+        input_src.setText(cv.getCv_link());
     }
 
     public void Display_NoEdit() {
-        lbl_name.setText(view1.getName());
-        lbl_jobtitle.setText(view1.getJob());
-        input_skills.setText(view1.getSkills());
-        input_year.setText(String.valueOf(view1.getExperience()) + " Year");
-        input_status.setText(view1.getStatus());
-        input_cmt.setText(view1.getComment());
-        input_cvdate.setText(view1.getCv_date());
-        input_location.setText(view1.getCan_location());
-        input_phone.setText(String.valueOf(view1.getPhone()));
-        input_referral.setText(view1.getReferral());
-        input_updBy.setText(view1.getUser());
-        input_label.setText(view1.getLabel());
-        input_src.setText(view1.getCv_link());
+        lbl_name.setText(cv.getName());
+        lbl_jobtitle.setText(cv.getJob());
+        input_skills.setText(cv.getSkills());
+        input_year.setText(String.valueOf(cv.getExperience()));
+        input_status.setText(cv.getStatus());
+        input_cmt.setText(cv.getComment());
+        input_cvdate.setText(cv.getCv_date());
+        input_location.setText(cv.getCan_location());
+        input_phone.setText(String.valueOf(cv.getPhone()));
+        input_referral.setText(cv.getReferral());
+        input_updBy.setText(cv.getUser());
+        input_label.setText(cv.getLabel());
+        input_src.setText(cv.getCv_link());
         //-----------
         input_cmt.setEditable(false);
         input_year.setEditable(false);
@@ -135,12 +136,12 @@ public class DetailCandidate implements Initializable {
         input_src.setEditable(false);
         input_skills.setEditable(false);
         input_label.setEditable(false);
-        input_location.setEditable(false); 
+        input_location.setEditable(false);
     }
 
     public void Show() {
         try {
-            URL url = new File("src/main/java/gui/page/DetailCandidate.fxml").toURI().toURL();
+            URL url = new File("src/main/java/gui/page/DetailCandidateModel.fxml").toURI().toURL();
             URL css = new File("src/main/java/gui/App.css").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Stage primaryStage = new Stage();
@@ -152,7 +153,8 @@ public class DetailCandidate implements Initializable {
             primaryStage.setOnCloseRequest(event
                     -> {
                 event.consume();
-                exit(primaryStage);
+                save();
+                primaryStage.close();
             });
         } catch (MalformedURLException ex) {
             Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -161,31 +163,35 @@ public class DetailCandidate implements Initializable {
         }
     }
 
-    @FXML
-    public void exit(Stage stage) {
+    public void save() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit");
         alert.setHeaderText("You're about to exit!");
         alert.setContentText("Do you want to save before exiting?");
         if (alert.showAndWait().get() == ButtonType.OK) {
             System.out.println("You successfully logged out!");
-            flag_save = "OK";
-            EditCandidate(edit);
-            stage.close();
-
+            if (edited == true) {
+                EditCandidate(cvedit);
+            }else{
+                EditCandidate(cv);
+            }
         }
     }
 
     @FXML
     void Change_txt(KeyEvent event) {
-        edit = save();
-        //System.out.println(edit.toString());
-
+        cvedit = get_txt();
     }
 
-    public CandiidateModel save() {
+    public CandiidateModel get_txt() {
         CandiidateModel candidate = null;
         String year = input_year.getText();
+        int yearexp;
+        if(year.isEmpty()){
+            yearexp=0;
+        }else{
+            yearexp=Integer.parseInt(year);
+        }
         String src = input_src.getText();
         String skills = input_skills.getText();
         String status = input_status.getText();
@@ -196,21 +202,13 @@ public class DetailCandidate implements Initializable {
         String location = input_location.getText();
         String phone = input_phone.getText();
         String referal = input_referral.getText();
-        candidate = new CandiidateModel(view1.getId(), view1.getName(), view1.getJob(), Integer.parseInt(year), src, skills, status, comment, updBY, label, cv_date, location, referal, Integer.parseInt(phone));
+        candidate = new CandiidateModel(cv.getId(), cv.getName(), cv.getJob(), yearexp, src, skills, status, comment, updBY, label, cv_date, location, referal, Integer.parseInt(phone), "true",null);
         return candidate;
     }
 
     public void EditCandidate(CandiidateModel candidate) {
-        for (CandiidateModel ds : Data.lstCandidateModel) {
-            if (ds.getId() == candidate.getId()) {
-                ds = candidate;
-                int index = Data.lstCandidateModel.indexOf(view1);
-                //Data.lstCandidateModel.remove(index);
-                Data.lstCandidateModel.set(index, ds);
-                break;
-            }
-        }
-
+                int index = Data.lstCandidateModel.indexOf(cv);
+                Data.lstCandidateModel.set(index, candidate);
     }
 
 }

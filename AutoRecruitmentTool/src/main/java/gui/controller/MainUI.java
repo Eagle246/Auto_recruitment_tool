@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -139,7 +140,7 @@ public class MainUI implements Initializable {
 
     // Variable ------------------------------------------------------------
     private ObservableList<CandiidateModel> lstCandidates = null;
-    //public static ObservableList<CandiidateModel> lstCandidates = null;
+   
     public static CandiidateModel viewCandidateModel = null;
     //-----------------------------------------------------------------------
 
@@ -156,9 +157,7 @@ public class MainUI implements Initializable {
         ccbTitleUpdateListener(cbCVDateTop, "CV Date");
         ccbTitleUpdateListener(cbReferralTop, "Referral");
         CreatContextMenu();
-        if(DetailCandidate.flag_save.equalsIgnoreCase("OK")){
-            refreshData();
-        }
+        
     }
 
     private void initTableView() {
@@ -312,14 +311,14 @@ public class MainUI implements Initializable {
         tbData.setItems(lstCandidates);
         tbData.refresh();
     }
-    
+
     public static String flag = "";
 
     private void CreatContextMenu() {
         tbData.setRowFactory(new Callback<TableView<CandiidateModel>, TableRow<CandiidateModel>>() {
             @Override
             public TableRow<CandiidateModel> call(TableView<CandiidateModel> p) {
-                final TableRow<CandiidateModel> row = new TableRow<>();               
+                final TableRow<CandiidateModel> row = new TableRow<>();
                 final ContextMenu rowMenu = new ContextMenu();
                 ContextMenu tableMenu = p.getContextMenu();
                 if (tableMenu != null) {
@@ -331,18 +330,18 @@ public class MainUI implements Initializable {
                     @Override
                     public void handle(ActionEvent t) {
                         flag = "View";
-                        new DetailCandidate(row.getItem()).Show(); 
+                        new DetailCandidate(row.getItem(),false).Show();
                     }
                 });
                 MenuItem editItem = new MenuItem("Edit");
                 editItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
-                        flag = "Edit";    
-                        new DetailCandidate(row.getItem()).Show();   
+                        flag = "Edit";
+                        new DetailCandidate(row.getItem(),true).Show();
                     }
                 });
-                
+
                 MenuItem bulkchangeItem = new MenuItem("Bulk Change");
                 MenuItem exportItem = new MenuItem("Export Excel");
                 MenuItem refreshItem = new MenuItem("Refresh");
@@ -352,14 +351,14 @@ public class MainUI implements Initializable {
                         refreshData();
                     }
                 });
-                rowMenu.getItems().addAll(viewItem, editItem, bulkchangeItem, exportItem,refreshItem);
+                rowMenu.getItems().addAll(viewItem, editItem, bulkchangeItem, exportItem, refreshItem);
                 row.contextMenuProperty().bind(
                         Bindings.when(Bindings.isNotNull(row.itemProperty()))
                                 .then(rowMenu)
                                 .otherwise((ContextMenu) null));
                 return row;
-            } 
-        }       
+            }
+        }
         );
     }
 

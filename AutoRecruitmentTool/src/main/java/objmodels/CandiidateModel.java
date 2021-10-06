@@ -1,10 +1,13 @@
 package objmodels;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class CandiidateModel {
 
+    
     private SimpleIntegerProperty id;
     private SimpleStringProperty name;
     private SimpleStringProperty job;
@@ -19,8 +22,10 @@ public class CandiidateModel {
     private SimpleStringProperty can_location;
     private SimpleStringProperty referral;
     private SimpleIntegerProperty phone;
+    private List<InterviewStatus> lstStatus;
+    private SimpleStringProperty edited;
 
-    public CandiidateModel(Integer id, String name, String job, Integer experience, String cv_link, String skills, String status, String comment, String user, String label, String cv_date, String location, String referral, Integer phone) {
+    public CandiidateModel(Integer id, String name, String job, Integer experience, String cv_link, String skills, String status, String comment, String user, String label, String cv_date, String location, String referral, Integer phone, String edited,List<InterviewStatus> lstStatus) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.job = new SimpleStringProperty(job);
@@ -35,8 +40,28 @@ public class CandiidateModel {
         this.can_location = new SimpleStringProperty(location);
         this.referral = new SimpleStringProperty(referral);
         this.phone = new SimpleIntegerProperty(phone);
+        this.edited= new SimpleStringProperty(referral);
+        this.lstStatus= new ArrayList<>();
     }
 
+    public List<InterviewStatus> getLstStatus() {
+        return lstStatus;
+    }
+
+    public void setLstStatus(InterviewStatus lstStatus) {
+        this.lstStatus= new ArrayList<>();
+        this.lstStatus.add(lstStatus);
+    }
+    
+    public String getEdited() {
+        return edited.get();
+    }
+
+    public void setEdited(SimpleStringProperty edited) {
+        this.edited = edited;
+    }
+    
+    
     public int getId() {
         return id.get();
     }
