@@ -15,14 +15,14 @@ public class InterviewStatus {
     private SimpleStringProperty status;
     private SimpleStringProperty comment;
     private SimpleStringProperty updBy;
-    private SimpleStringProperty lable;
+    private SimpleStringProperty label;
     private SimpleStringProperty updDate;
 
-    public InterviewStatus(String status, String comment, String updBy, String lable, String updDate) {
+    public InterviewStatus(String status, String comment, String updBy, String label, String updDate) {
         this.status = new SimpleStringProperty(status);
         this.comment = new SimpleStringProperty(comment);
         this.updBy = new SimpleStringProperty(updBy);
-        this.lable = new SimpleStringProperty(lable);
+        this.label = new SimpleStringProperty(label);
         this.updDate = new SimpleStringProperty(updDate);
     }
 
@@ -50,14 +50,14 @@ public class InterviewStatus {
         this.updBy = new SimpleStringProperty(updBy);
     }
 
-    public String getLable() {
-        return lable.get();
+    public String getLabel() {
+        return label.get();
     }
 
-    public void setLable(String lable) {
-        this.lable = new SimpleStringProperty(lable);
+    public void setLabel(String label) {
+        this.label = new SimpleStringProperty(label);
     }
-
+    
     public String getUpdDate() {
         return updDate.get();
     }

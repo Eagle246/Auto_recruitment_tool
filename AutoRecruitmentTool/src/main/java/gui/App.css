@@ -64,3 +64,8 @@
 .input_field{
     -fx-background-color: #e6e6fa;
 }
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-alignment: CENTER;
+}

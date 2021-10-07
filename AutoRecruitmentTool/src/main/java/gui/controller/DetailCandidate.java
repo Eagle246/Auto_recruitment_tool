@@ -13,6 +13,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,10 +23,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import objmodels.CandiidateModel;
+import objmodels.InterviewStatus;
 
 /**
  *
@@ -74,9 +82,28 @@ public class DetailCandidate implements Initializable {
     @FXML
     private TextField input_referral;
 
+    @FXML
+    private TableView<InterviewStatus> tbHistory;
+
+    @FXML
+    private TableColumn<InterviewStatus, String> updDate;
+
+    @FXML
+    private TableColumn<InterviewStatus, String> cmt;
+
+    @FXML
+    private TableColumn<InterviewStatus, String> status;
+
+    @FXML
+    private TableColumn<InterviewStatus, String> updBy;
+
+    @FXML
+    private TableColumn<InterviewStatus, String> updlabel;
+
     private static CandiidateModel cv = null;
     private static CandiidateModel cvedit = null;
     private static boolean edited;
+    private ObservableList<InterviewStatus> lstInterviewStatus = null;
 
     public DetailCandidate() {
     }
@@ -87,12 +114,51 @@ public class DetailCandidate implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) { 
+    public void initialize(URL url, ResourceBundle rb) {
+        initTableViewHistory();
         if (edited == true) {
             Display();
         } else {
             Display_NoEdit();
         }
+    }
+
+    private void initTableViewHistory() {
+        //Init columns------------------------------------------    
+        updDate.setCellValueFactory(new PropertyValueFactory<>("updDate"));
+        updDate.setCellFactory(TextFieldTableCell.forTableColumn());
+        updDate.setOnEditCommit((TableColumn.CellEditEvent<InterviewStatus, String> t) -> {
+            ((InterviewStatus) t.getTableView().getItems().get(
+                    t.getTablePosition().getRow())).setUpdDate(t.getNewValue());
+        });
+        cmt.setCellValueFactory(new PropertyValueFactory<>("comment"));
+        cmt.setCellFactory(TextFieldTableCell.forTableColumn());
+        cmt.setOnEditCommit((TableColumn.CellEditEvent<InterviewStatus, String> t) -> {
+            ((InterviewStatus) t.getTableView().getItems().get(
+                    t.getTablePosition().getRow())).setComment(t.getNewValue());
+        });
+
+        status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        status.setCellFactory(TextFieldTableCell.forTableColumn());
+        status.setOnEditCommit((TableColumn.CellEditEvent<InterviewStatus, String> t) -> {
+            ((InterviewStatus) t.getTableView().getItems().get(
+                    t.getTablePosition().getRow())).setStatus(t.getNewValue());
+        });
+        updBy.setCellValueFactory(new PropertyValueFactory<>("updBy"));
+        updBy.setCellFactory(TextFieldTableCell.forTableColumn());
+        updBy.setOnEditCommit((TableColumn.CellEditEvent<InterviewStatus, String> t) -> {
+            ((InterviewStatus) t.getTableView().getItems().get(
+                    t.getTablePosition().getRow())).setUpdBy(t.getNewValue());
+        });
+        updlabel.setCellValueFactory(new PropertyValueFactory<>("label"));
+        updlabel.setCellFactory(TextFieldTableCell.forTableColumn());
+        updlabel.setOnEditCommit((TableColumn.CellEditEvent<InterviewStatus, String> t) -> {
+            ((InterviewStatus) t.getTableView().getItems().get(
+                    t.getTablePosition().getRow())).setLabel(t.getNewValue());
+        });
+        //Init table data --------------------------------------------------
+        lstInterviewStatus = FXCollections.observableArrayList(CandiidateModel.lstStatus);
+        tbHistory.setItems(lstInterviewStatus);
     }
 
     public void Display() {
@@ -154,6 +220,7 @@ public class DetailCandidate implements Initializable {
                     -> {
                 event.consume();
                 save();
+                //refreshCandiateGUI();
                 primaryStage.close();
             });
         } catch (MalformedURLException ex) {
@@ -161,6 +228,12 @@ public class DetailCandidate implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void refreshCandiateGUI() {
+        MainUI sc = new MainUI();
+        System.out.println(sc);
+        sc.refreshCandiateList();
     }
 
     public void save() {
@@ -172,7 +245,7 @@ public class DetailCandidate implements Initializable {
             System.out.println("You successfully logged out!");
             if (edited == true) {
                 EditCandidate(cvedit);
-            }else{
+            } else {
                 EditCandidate(cv);
             }
         }
@@ -187,10 +260,10 @@ public class DetailCandidate implements Initializable {
         CandiidateModel candidate = null;
         String year = input_year.getText();
         int yearexp;
-        if(year.isEmpty()){
-            yearexp=0;
-        }else{
-            yearexp=Integer.parseInt(year);
+        if (year.isEmpty()) {
+            yearexp = 0;
+        } else {
+            yearexp = Integer.parseInt(year);
         }
         String src = input_src.getText();
         String skills = input_skills.getText();
@@ -202,13 +275,13 @@ public class DetailCandidate implements Initializable {
         String location = input_location.getText();
         String phone = input_phone.getText();
         String referal = input_referral.getText();
-        candidate = new CandiidateModel(cv.getId(), cv.getName(), cv.getJob(), yearexp, src, skills, status, comment, updBY, label, cv_date, location, referal, Integer.parseInt(phone), "true",null);
+        candidate = new CandiidateModel(cv.getId(), cv.getName(), cv.getJob(), yearexp, src, skills, status, comment, updBY, label, cv_date, location, referal, Integer.parseInt(phone), "true", null);
         return candidate;
     }
 
     public void EditCandidate(CandiidateModel candidate) {
-                int index = Data.lstCandidateModel.indexOf(cv);
-                Data.lstCandidateModel.set(index, candidate);
+        int index = Data.lstCandidateModel.indexOf(cv);
+        Data.lstCandidateModel.set(index, candidate);
     }
 
 }

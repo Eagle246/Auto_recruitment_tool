@@ -238,7 +238,6 @@ public class MainUI implements Initializable {
         //Init table data --------------------------------------------------
         lstCandidates = FXCollections.observableArrayList(Data.lstCandidateModel);
         tbData.setItems(lstCandidates);
-
     }
 
     private void InitFilterControls() {
@@ -309,11 +308,15 @@ public class MainUI implements Initializable {
         lstCandidates = FXCollections.observableArrayList(Data.lstCandidateModel);
         cbTitlesTop.getCheckModel().check(0);
         tbData.setItems(lstCandidates);
+        tbData.refresh();  
+    }
+    
+    public void refreshCandiateList(){
+        System.out.println("refresh Data Listcandidate");
+        lstCandidates = FXCollections.observableArrayList(Data.lstCandidateModel);
+        tbData.setItems(lstCandidates);
         tbData.refresh();
     }
-
-    public static String flag = "";
-
     private void CreatContextMenu() {
         tbData.setRowFactory(new Callback<TableView<CandiidateModel>, TableRow<CandiidateModel>>() {
             @Override
@@ -329,7 +332,6 @@ public class MainUI implements Initializable {
                 viewItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
-                        flag = "View";
                         new DetailCandidate(row.getItem(),false).Show();
                     }
                 });
@@ -337,7 +339,6 @@ public class MainUI implements Initializable {
                 editItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
-                        flag = "Edit";
                         new DetailCandidate(row.getItem(),true).Show();
                     }
                 });

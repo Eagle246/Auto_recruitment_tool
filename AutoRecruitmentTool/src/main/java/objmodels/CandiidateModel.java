@@ -22,7 +22,7 @@ public class CandiidateModel {
     private SimpleStringProperty can_location;
     private SimpleStringProperty referral;
     private SimpleIntegerProperty phone;
-    private List<InterviewStatus> lstStatus;
+    public static List<InterviewStatus> lstStatus = new ArrayList<>();;
     private SimpleStringProperty edited;
 
     public CandiidateModel(Integer id, String name, String job, Integer experience, String cv_link, String skills, String status, String comment, String user, String label, String cv_date, String location, String referral, Integer phone, String edited,List<InterviewStatus> lstStatus) {
@@ -49,7 +49,6 @@ public class CandiidateModel {
     }
 
     public void setLstStatus(InterviewStatus lstStatus) {
-        this.lstStatus= new ArrayList<>();
         this.lstStatus.add(lstStatus);
     }
     
