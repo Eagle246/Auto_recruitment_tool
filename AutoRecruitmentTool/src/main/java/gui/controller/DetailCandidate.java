@@ -30,7 +30,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
 import objmodels.CandiidateModel;
 import objmodels.InterviewStatus;
 
@@ -45,9 +44,6 @@ public class DetailCandidate implements Initializable {
 
     @FXML
     private Label lbl_jobtitle;
-
-    @FXML
-    private Label lbl_gender;
 
     @FXML
     private TextField input_year;
@@ -110,6 +106,7 @@ public class DetailCandidate implements Initializable {
 
     public DetailCandidate(CandiidateModel cv, boolean edited) {
         this.cv = cv;
+        //System.out.println("candidate detail: " + cv.toString());
         this.edited = edited;
     }
 
@@ -157,7 +154,7 @@ public class DetailCandidate implements Initializable {
                     t.getTablePosition().getRow())).setLabel(t.getNewValue());
         });
         //Init table data --------------------------------------------------
-        lstInterviewStatus = FXCollections.observableArrayList(CandiidateModel.lstStatus);
+        lstInterviewStatus = FXCollections.observableArrayList(cv.getLstStatus());
         tbHistory.setItems(lstInterviewStatus);
     }
 
@@ -275,13 +272,23 @@ public class DetailCandidate implements Initializable {
         String location = input_location.getText();
         String phone = input_phone.getText();
         String referal = input_referral.getText();
-        candidate = new CandiidateModel(cv.getId(), cv.getName(), cv.getJob(), yearexp, src, skills, status, comment, updBY, label, cv_date, location, referal, Integer.parseInt(phone), "true", null);
+        candidate = new CandiidateModel(cv.getId(), cv.getName(), cv.getJob(), yearexp, src, skills, status, comment, updBY, label, cv_date, location, referal, Integer.parseInt(phone), "true", cv.getLstStatus());
         return candidate;
     }
 
     public void EditCandidate(CandiidateModel candidate) {
-        int index = Data.lstCandidateModel.indexOf(cv);
-        Data.lstCandidateModel.set(index, candidate);
+        if (edited == true) {
+            if (cvedit != null) {
+                InterviewStatus historystatus = new InterviewStatus(cvedit.getStatus(), cvedit.getComment(), cvedit.getUser(), cvedit.getLabel(), cvedit.getCv_date());
+                candidate.setLstStatus(historystatus);
+                int index = Data.lstCandidateModel.indexOf(cv);
+                Data.lstCandidateModel.set(index, candidate);
+                cvedit=null;
+            }else{
+                int index = Data.lstCandidateModel.indexOf(cv);
+                Data.lstCandidateModel.set(index, cv);
+            }
+        }
     }
 
 }

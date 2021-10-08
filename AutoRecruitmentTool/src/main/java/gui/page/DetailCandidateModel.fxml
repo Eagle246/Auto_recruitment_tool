@@ -155,7 +155,7 @@
                                                     <TableColumn fx:id="cmt" prefWidth="75.0" text="Latest Comment" />
                                                     <TableColumn fx:id="status" prefWidth="75.0" text="Latest Status" />
                                                     <TableColumn fx:id="updBy" prefWidth="75.0" text="Update By" />
-                                                    <TableColumn fx:id="updlabel" prefWidth="75.0" text="updLabel" />
+                                                    <TableColumn fx:id="updlabel" prefWidth="75.0" text="Label" />
                                                   </columns>
                                                    <columnResizePolicy>
                                                       <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

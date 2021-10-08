@@ -17,6 +17,7 @@ import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import objmodels.CandiidateModel;
+import objmodels.InterviewStatus;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -342,7 +343,8 @@ public class Recruitment_VietNamWork extends Recruitment_Online {
                 latest_upd = lines[i + 1];
             }
             //c = new Candidate(name, jobtitle, company, year, salary, location, link, gender, "phone", "referral", latest_upd, "label", "status", "skill", "comment");
-            cd= new CandiidateModel(1, name, jobtitle,handle_year(year), "link","skills","New","comment","user", "label", "latest_upd", location,Refeeral, 123456,"false",null);
+            List<InterviewStatus> lst = new ArrayList<>();
+            cd= new CandiidateModel(1, name, jobtitle,handle_year(year), "link","skills","New","comment","user", "label", "latest_upd", location,Refeeral, 123456,"false",lst);
         }
         //return c;
         return cd;

@@ -1,6 +1,5 @@
 package objmodels;
 
-import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -22,7 +21,7 @@ public class CandiidateModel {
     private SimpleStringProperty can_location;
     private SimpleStringProperty referral;
     private SimpleIntegerProperty phone;
-    public static List<InterviewStatus> lstStatus = new ArrayList<>();;
+    private List<InterviewStatus> lstStatus ;
     private SimpleStringProperty edited;
 
     public CandiidateModel(Integer id, String name, String job, Integer experience, String cv_link, String skills, String status, String comment, String user, String label, String cv_date, String location, String referral, Integer phone, String edited,List<InterviewStatus> lstStatus) {
@@ -40,24 +39,25 @@ public class CandiidateModel {
         this.can_location = new SimpleStringProperty(location);
         this.referral = new SimpleStringProperty(referral);
         this.phone = new SimpleIntegerProperty(phone);
-        this.edited= new SimpleStringProperty(referral);
-        this.lstStatus= new ArrayList<>();
+        this.edited= new SimpleStringProperty(edited);
+        this.lstStatus= lstStatus;
     }
 
     public List<InterviewStatus> getLstStatus() {
         return lstStatus;
     }
 
-    public void setLstStatus(InterviewStatus lstStatus) {
+    public List<InterviewStatus> setLstStatus(InterviewStatus lstStatus) {
         this.lstStatus.add(lstStatus);
+        return this.lstStatus;
     }
     
     public String getEdited() {
         return edited.get();
     }
 
-    public void setEdited(SimpleStringProperty edited) {
-        this.edited = edited;
+    public void setEdited(String edited) {
+        this.edited = new SimpleStringProperty(edited);
     }
     
     
@@ -173,9 +173,15 @@ public class CandiidateModel {
         this.phone = new SimpleIntegerProperty(phone);
     }
 
+//    @Override
+//    public String toString() {
+//        return "CandiidateModel{" + "id=" + id + ", name=" + name + ", job=" + job + ", experience=" + experience + ", cv_link=" + cv_link + ", skills=" + skills + ", status=" + status + ", comment=" + comment + ", user=" + user + ", label=" + label + ", cv_date=" + cv_date + ", can_location=" + can_location + ", referral=" + referral + ", phone=" + phone + '}';
+//    }
+
     @Override
     public String toString() {
-        return "CandiidateModel{" + "id=" + id + ", name=" + name + ", job=" + job + ", experience=" + experience + ", cv_link=" + cv_link + ", skills=" + skills + ", status=" + status + ", comment=" + comment + ", user=" + user + ", label=" + label + ", cv_date=" + cv_date + ", can_location=" + can_location + ", referral=" + referral + ", phone=" + phone + '}';
+        return "CandiidateModel{" + "id=" + id + ", name=" + name + ", job=" + job + ", experience=" + experience + ", cv_link=" + cv_link + ", skills=" + skills + ", status=" + status + ", comment=" + comment + ", user=" + user + ", label=" + label + ", cv_date=" + cv_date + ", can_location=" + can_location + ", referral=" + referral + ", phone=" + phone + ", lstStatus=" + lstStatus + ", edited=" + edited + '}';
     }
+    
     
 }

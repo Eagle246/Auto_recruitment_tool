@@ -65,5 +65,10 @@ public class InterviewStatus {
     public void setUpdDate(String updDate) {
         this.updDate = new SimpleStringProperty(updDate);
     }
+
+    @Override
+    public String toString() {
+        return "InterviewStatus{" + "status=" + status + ", comment=" + comment + ", updBy=" + updBy + ", label=" + label + ", updDate=" + updDate + '}';
+    }
     
 }

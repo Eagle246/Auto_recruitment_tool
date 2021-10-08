@@ -37,7 +37,8 @@ public class Data {
     public static List<Candidate> lstCandidates = new ArrayList<>(); ////
 
     public static List<CandiidateModel> lstCandidateModel = new ArrayList<>();
-
+    private List<InterviewStatus> lst = new ArrayList<>();
+    
     //Load Defintion XML to get lstRecruiter, lstLocators, lstTitles, lstCVUpdate
     public static void loadDefinitionData() {
 
@@ -57,19 +58,23 @@ public class Data {
         lstTitles.addAll(Arrays.asList("dgdfgfdg", "tttt"));
 
         //test ----------------------
+        List<InterviewStatus> lst = new ArrayList<>();
+        List<InterviewStatus> lst1 = new ArrayList<>();
+        List<InterviewStatus> lst2 = new ArrayList<>();
+        List<InterviewStatus> lst3 = new ArrayList<>();
         lstCandidateModel.addAll(Arrays.asList(
-                new CandiidateModel(1, "Nhac", "Developer", 3, "google", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890, "false", null),
-                new CandiidateModel(2, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890, "false", null),
-                new CandiidateModel(3, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890, "false", null),
-                new CandiidateModel(4, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890, "false", null)
+                new CandiidateModel(1, "Nhac", "Developer", 3, "google", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890, "false",lst ),
+                new CandiidateModel(2, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890, "false", lst1),
+                new CandiidateModel(3, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890, "false", lst2),
+                new CandiidateModel(4, "Nhac", "Developer", 3, "google.com", "abc", "In progress", "none", "somebody", "test", "2021-09-09", "HCMC", "VNWork", 1234567890, "false", lst3)
         ));
         //------------------------------
-        CandiidateModel.lstStatus.addAll(Arrays.asList(
-                new InterviewStatus("New", "abc", "Thuy", "AI", "2021-10-07"),
-                new InterviewStatus("New", "abc", "Thuy", "AI", "2021-10-07"),
-                new InterviewStatus("New", "abc", "Thuy", "AI", "2021-10-07"),
-                new InterviewStatus("New", "abc", "Thuy", "AI", "2021-10-07")
-        ));
+//        CandiidateModel.lstStatus.addAll(Arrays.asList(
+//                new InterviewStatus("New", "abc", "Thuy", "AI", "2021-10-07"),
+//                new InterviewStatus("New", "abc", "Thuy", "AI", "2021-10-07"),
+//                new InterviewStatus("New", "abc", "Thuy", "AI", "2021-10-07"),
+//                new InterviewStatus("New", "abc", "Thuy", "AI", "2021-10-07")
+//        ));
     }
 
     public static void Update() {
