@@ -37,7 +37,7 @@ import objmodels.InterviewStatus;
  *
  * @author LE THUY
  */
-public class DetailCandidate implements Initializable {
+public class DetailCandidate extends BaseController {
 
     @FXML
     private Label lbl_name;
@@ -201,30 +201,15 @@ public class DetailCandidate implements Initializable {
         input_label.setEditable(false);
         input_location.setEditable(false);
     }
-
-    public void Show() {
-        try {
-            URL url = new File("src/main/java/gui/page/DetailCandidateModel.fxml").toURI().toURL();
-            URL css = new File("src/main/java/gui/App.css").toURI().toURL();
-            Parent root = FXMLLoader.load(url);
-            Stage primaryStage = new Stage();
-            primaryStage.setTitle("View Detail CV management");
-            Scene main = new Scene(root, 1150, 620);
-            main.getStylesheets().add(css.toExternalForm());
-            primaryStage.setScene(main);
-            primaryStage.show();
-            primaryStage.setOnCloseRequest(event
-                    -> {
-                event.consume();
-                save();
-                //refreshCandiateGUI();
-                primaryStage.close();
-            });
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
+    public void Show(String sTitle) throws IOException {
+        this.Show(null, sTitle);
+        priStage.setOnCloseRequest(event-> {
+            save();
+            event.consume();
+            ((MainUI)getInstance("MainUI")).testMethod();  ////
+            priStage.close();
+        });
     }
 
     public void refreshCandiateGUI() {

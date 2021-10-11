@@ -48,7 +48,7 @@ import org.controlsfx.control.CheckComboBox;
  *
  * @author Eagle
  */
-public class MainUI implements Initializable {
+public class MainUI extends BaseController {
 
     //Declare top filter Controls---------------------------
     @FXML
@@ -144,6 +144,8 @@ public class MainUI implements Initializable {
     public static CandiidateModel viewCandidateModel = null;
     //-----------------------------------------------------------------------
 
+    public MainUI(){} 
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initTableView();
@@ -332,14 +334,22 @@ public class MainUI implements Initializable {
                 viewItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
-                        new DetailCandidate(row.getItem(),false).Show();
+                        try {
+                            new DetailCandidate(row.getItem(),false).Show("View Detail CV management");
+                        } catch (IOException ex) {
+                            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                 });
                 MenuItem editItem = new MenuItem("Edit");
                 editItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
-                        new DetailCandidate(row.getItem(),true).Show();
+                        try {
+                            new DetailCandidate(row.getItem(),true).Show("View Detail CV management");
+                        } catch (IOException ex) {
+                            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                 });
 
@@ -392,6 +402,9 @@ public class MainUI implements Initializable {
         }
         //Data.Update();
         refreshData();
-
+    }
+    
+    public void testMethod(){
+        System.out.println("value of textSearch =" + txtSearchTop.getText());
     }
 }
