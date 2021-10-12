@@ -4,7 +4,6 @@ gui\controller\MainUI$3.class
 filter\Recruitment_Local.class
 gui\controller\Login.class
 filter\Recruitment_DB.class
-gui\controller\MainUI$3$3.class
 objmodels\Candidate.class
 gui\controller\Settings.class
 gui\controller\MainUI$2.class

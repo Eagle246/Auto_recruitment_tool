@@ -9,38 +9,28 @@ import common.Utils;
 import datacenter.Data;
 import filter.Recruitment_Online;
 import filter.Recruitment_VietNamWork;
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.converter.IntegerStringConverter;
 import objmodels.CandiidateModel;
-import objmodels.Recruiter;
 import org.controlsfx.control.CheckComboBox;
 
 /**
@@ -244,6 +234,7 @@ public class MainUI extends BaseController {
 
     private void InitFilterControls() {
         // Defined controls
+        //cbStatusTop.getItems().addAll(FXCollections.observableList(Data.lstStatus));
         cbStatusTop.getItems().addAll(FXCollections.observableList(addAllCheck(Data.lstStatus)));
         cbLastResumeUpdateOnlineSearch.setItems(FXCollections.observableList(new ArrayList<>(Data.lstResumeUpd.keySet())));
         cbLocationTop.getItems().addAll(FXCollections.observableList(Data.lstLocators));
@@ -314,11 +305,11 @@ public class MainUI extends BaseController {
     }
     
     public void refreshCandiateList(){
-        System.out.println("refresh Data Listcandidate");
         lstCandidates = FXCollections.observableArrayList(Data.lstCandidateModel);
         tbData.setItems(lstCandidates);
         tbData.refresh();
     }
+    
     private void CreatContextMenu() {
         tbData.setRowFactory(new Callback<TableView<CandiidateModel>, TableRow<CandiidateModel>>() {
             @Override
@@ -355,14 +346,7 @@ public class MainUI extends BaseController {
 
                 MenuItem bulkchangeItem = new MenuItem("Bulk Change");
                 MenuItem exportItem = new MenuItem("Export Excel");
-                MenuItem refreshItem = new MenuItem("Refresh");
-                refreshItem.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent t) {
-                        refreshData();
-                    }
-                });
-                rowMenu.getItems().addAll(viewItem, editItem, bulkchangeItem, exportItem, refreshItem);
+                rowMenu.getItems().addAll(viewItem, editItem, bulkchangeItem, exportItem);
                 row.contextMenuProperty().bind(
                         Bindings.when(Bindings.isNotNull(row.itemProperty()))
                                 .then(rowMenu)

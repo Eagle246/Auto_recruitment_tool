@@ -6,20 +6,12 @@
 package gui.controller;
 
 import datacenter.Data;
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -29,7 +21,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import objmodels.CandiidateModel;
 import objmodels.InterviewStatus;
 
@@ -207,7 +198,8 @@ public class DetailCandidate extends BaseController {
         priStage.setOnCloseRequest(event-> {
             save();
             event.consume();
-            ((MainUI)getInstance("MainUI")).testMethod();  ////
+            //((MainUI)getInstance("MainUI")).testMethod();  ////
+            ((MainUI)getInstance("MainUI")).refreshCandiateList();
             priStage.close();
         });
     }

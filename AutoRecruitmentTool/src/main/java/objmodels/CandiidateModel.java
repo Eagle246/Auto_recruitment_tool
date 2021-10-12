@@ -173,11 +173,6 @@ public class CandiidateModel {
         this.phone = new SimpleIntegerProperty(phone);
     }
 
-//    @Override
-//    public String toString() {
-//        return "CandiidateModel{" + "id=" + id + ", name=" + name + ", job=" + job + ", experience=" + experience + ", cv_link=" + cv_link + ", skills=" + skills + ", status=" + status + ", comment=" + comment + ", user=" + user + ", label=" + label + ", cv_date=" + cv_date + ", can_location=" + can_location + ", referral=" + referral + ", phone=" + phone + '}';
-//    }
-
     @Override
     public String toString() {
         return "CandiidateModel{" + "id=" + id + ", name=" + name + ", job=" + job + ", experience=" + experience + ", cv_link=" + cv_link + ", skills=" + skills + ", status=" + status + ", comment=" + comment + ", user=" + user + ", label=" + label + ", cv_date=" + cv_date + ", can_location=" + can_location + ", referral=" + referral + ", phone=" + phone + ", lstStatus=" + lstStatus + ", edited=" + edited + '}';

@@ -26,16 +26,17 @@ public class BaseController implements Initializable {
     private static final HashMap<String, Object> lstControlers = new HashMap<String, Object>();
     public Stage priStage;
     public Scene priScene;
-    
+
     public BaseController() {
         lstControlers.put(this.getClass().getSimpleName(), this);
     }
+
     public Object getInstance(String sName) {
-      return lstControlers.get(sName);
+        return lstControlers.get(sName);
     }
-    
-     public void Show(Stage oStage, String sTitle) throws MalformedURLException, IOException{
-        priStage = (oStage==null ? new Stage(): oStage);
+
+    public void Show(Stage oStage, String sTitle) throws MalformedURLException, IOException {
+        priStage = (oStage == null ? new Stage() : oStage);
         String sFXML = String.format("src/main/java/gui/page/%s.fxml", this.getClass().getSimpleName());
         URL url = new File(sFXML).toURI().toURL();
         URL css = new File("src/main/java/gui/App.css").toURI().toURL();
@@ -44,12 +45,12 @@ public class BaseController implements Initializable {
         priScene = new Scene(root, 1150, 620);
         priScene.getStylesheets().add(css.toExternalForm());
         priStage.setScene(priScene);
-        priStage.show(); 
+        priStage.show();
     }
-     
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
