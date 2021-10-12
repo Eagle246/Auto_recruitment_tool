@@ -14,8 +14,8 @@ public class App extends Application {
        oMainUI.Show(primaryStage,"Candidate management");
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
 
 }

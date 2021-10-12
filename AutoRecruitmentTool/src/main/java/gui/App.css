@@ -75,3 +75,13 @@
     -fx-border-color: transparent;
     -fx-alignment: CENTER;
 }
+
+.tab-pane .tab-header-area .tab-header-background{
+/*    -fx-background-color: -fx-outer-border, -fx-text-box-border, my-tab-header-background ;*/
+    -fx-background-color:transparent;
+}
+.tab {
+  -fx-font-family: System;
+  -fx-font-size: 14;
+  -fx-background-color:transparent;
+}

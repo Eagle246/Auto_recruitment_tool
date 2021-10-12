@@ -5,6 +5,7 @@
  */
 package gui.controller;
 
+import com.jfoenix.controls.JFXTextArea;
 import datacenter.Data;
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,59 +33,44 @@ import objmodels.InterviewStatus;
 public class DetailCandidate extends BaseController {
 
     @FXML
-    private Label lbl_name;
-
-    @FXML
-    private Label lbl_jobtitle;
-
-    @FXML
-    private TextField input_year;
-
-    @FXML
-    private TextField input_skills;
-
-    @FXML
-    private TextField input_cmt;
-
-    @FXML
-    private TextField input_status;
-
-    @FXML
-    private TextField input_label;
-
-    @FXML
-    private TextField input_updBy;
-
-    @FXML
-    private TextField input_location;
-
-    @FXML
-    private TextField input_cvdate;
-
+    private TextField input_updDate;
     @FXML
     private TextField input_phone;
-
-    @FXML
-    private TextField input_src;
-
     @FXML
     private TextField input_referral;
-
+    @FXML
+    private TextField input_src;
+    @FXML
+    private TextField input_updateBy;
+    @FXML
+    private Label txt_Date;
+    @FXML
+    private ComboBox<String> cb_currentStatus;
+    @FXML
+    private TextField input_label;
+    @FXML
+    private JFXTextArea input_cmt;
+    //---------------
+    @FXML
+    private Label lbl_name;
+    @FXML
+    private Label lbl_jobtitle;
+    @FXML
+    private TextField input_year;
+    @FXML
+    private TextField input_skills;
+    @FXML
+    private TextField input_location;
     @FXML
     private TableView<InterviewStatus> tbHistory;
-
     @FXML
     private TableColumn<InterviewStatus, String> updDate;
-
     @FXML
     private TableColumn<InterviewStatus, String> cmt;
-
     @FXML
     private TableColumn<InterviewStatus, String> status;
-
     @FXML
     private TableColumn<InterviewStatus, String> updBy;
-
     @FXML
     private TableColumn<InterviewStatus, String> updlabel;
 
@@ -97,12 +84,12 @@ public class DetailCandidate extends BaseController {
 
     public DetailCandidate(CandiidateModel cv, boolean edited) {
         this.cv = cv;
-        //System.out.println("candidate detail: " + cv.toString());
         this.edited = edited;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       cb_currentStatus.getItems().addAll(FXCollections.observableList(Data.lstStatus));
         initTableViewHistory();
         if (edited == true) {
             Display();
@@ -154,13 +141,14 @@ public class DetailCandidate extends BaseController {
         lbl_jobtitle.setText(cv.getJob());
         input_skills.setText(cv.getSkills());
         input_year.setText(String.valueOf(cv.getExperience()));
-        input_status.setText(cv.getStatus());
+        //input_status.setText(cv.getStatus());
+        cb_currentStatus.getSelectionModel().select(cv.getStatus());
         input_cmt.setText(cv.getComment());
-        input_cvdate.setText(cv.getCv_date());
+        input_updDate.setText(cv.getCv_date());
         input_location.setText(cv.getCan_location());
         input_phone.setText(String.valueOf(cv.getPhone()));
         input_referral.setText(cv.getReferral());
-        input_updBy.setText(cv.getUser());
+        input_updateBy.setText(cv.getUser());
         input_label.setText(cv.getLabel());
         input_src.setText(cv.getCv_link());
     }
@@ -170,23 +158,24 @@ public class DetailCandidate extends BaseController {
         lbl_jobtitle.setText(cv.getJob());
         input_skills.setText(cv.getSkills());
         input_year.setText(String.valueOf(cv.getExperience()));
-        input_status.setText(cv.getStatus());
+        //input_status.setText(cv.getStatus());
+        cb_currentStatus.getSelectionModel().select(cv.getStatus());
         input_cmt.setText(cv.getComment());
-        input_cvdate.setText(cv.getCv_date());
+        input_updDate.setText(cv.getCv_date());
         input_location.setText(cv.getCan_location());
         input_phone.setText(String.valueOf(cv.getPhone()));
         input_referral.setText(cv.getReferral());
-        input_updBy.setText(cv.getUser());
+        input_updateBy.setText(cv.getUser());
         input_label.setText(cv.getLabel());
         input_src.setText(cv.getCv_link());
         //-----------
         input_cmt.setEditable(false);
         input_year.setEditable(false);
-        input_status.setEditable(false);
+        //input_status.setEditable(false);
         input_phone.setEditable(false);
-        input_cvdate.setEditable(false);
+        input_updDate.setEditable(false);
         input_referral.setEditable(false);
-        input_updBy.setEditable(false);
+        input_updateBy.setEditable(false);
         input_src.setEditable(false);
         input_skills.setEditable(false);
         input_label.setEditable(false);
@@ -241,11 +230,11 @@ public class DetailCandidate extends BaseController {
         }
         String src = input_src.getText();
         String skills = input_skills.getText();
-        String status = input_status.getText();
+        String status = cb_currentStatus.getSelectionModel().getSelectedItem();
         String comment = input_cmt.getText();
-        String updBY = input_updBy.getText();
+        String updBY = input_updateBy.getText();
         String label = input_label.getText();
-        String cv_date = input_cvdate.getText();
+        String cv_date = input_updDate.getText();
         String location = input_location.getText();
         String phone = input_phone.getText();
         String referal = input_referral.getText();
