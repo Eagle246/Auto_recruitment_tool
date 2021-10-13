@@ -7,7 +7,6 @@ package datacenter;
 
 import objmodels.User;
 import objmodels.Candidate;
-
 import java.sql.*;
 import objmodels.Account;
 
@@ -18,18 +17,20 @@ public class DBServer {
     private final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     private Connection connection;
     private Account Acc; 
-    private String DB_URL;
-    
+    private String DB_URL="jdbc:mysql://localhost/hr";
+    private String dbUser="root";
+    private String dbPass="sapassword";
     public DBServer(){}
-    public DBServer(Account oAcc, String url){
-        Acc = oAcc; 
-        DB_URL = url;
-    }
+//    public DBServer(Account oAcc, String url){
+//        Acc = oAcc; 
+//        DB_URL = url;
+//    }
 
     public boolean connect() {
         try {
             Class.forName(JDBC_DRIVER);
-            connection = DriverManager.getConnection(DB_URL, Acc.AccName, Acc.PW);
+//            connection = DriverManager.getConnection(DB_URL, Acc.AccName, Acc.PW);
+            connection = DriverManager.getConnection(DB_URL, dbUser, dbPass);
             return true;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -38,10 +39,11 @@ public class DBServer {
             e.printStackTrace();
             return false;
             // Could not connect to the database
-        }
+        } 
     }
 
     public Connection getConnection() {
+        connect();
         return connection;
     }
 

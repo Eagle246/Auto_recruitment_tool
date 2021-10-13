@@ -155,7 +155,7 @@
                                                       <Font name="System Italic" size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <JFXTextArea fx:id="input_cmt" layoutX="14.0" layoutY="135.0" prefHeight="65.0" prefWidth="1037.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+                                                <JFXTextArea fx:id="input_cmt" layoutX="14.0" layoutY="135.0" onKeyTyped="#Change_txt" prefHeight="65.0" prefWidth="1037.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>

@@ -8,6 +8,7 @@ package system;
 import common.Utils;
 import datacenter.Data;
 import gui.App;
+import java.sql.SQLException;
 import javafx.application.Application;
 import selenium.SelServices;
 /**
@@ -15,13 +16,13 @@ import selenium.SelServices;
  * @author Eagle
  */
 public class Main {
-    public static void main(String args[]){
+    public static void main(String args[]) throws SQLException{
         InitApp();
         new SelServices();
         Application.launch(App.class, args);  
     }
     
-    private static void InitApp(){
+    private static void InitApp() throws SQLException{
        Utils.ReadXML();
        Data.loadDefinitionData();
     }

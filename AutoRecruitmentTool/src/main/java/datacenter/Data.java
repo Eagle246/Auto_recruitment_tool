@@ -5,7 +5,6 @@
  */
 package datacenter;
 
-import gui.controller.DetailCandidate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,7 +14,7 @@ import objmodels.Candidate;
 import objmodels.CandiidateModel;
 import objmodels.InterviewStatus;
 import objmodels.Recruiter;
-
+import java.sql.*;
 /**
  *
  * @author Eagle
@@ -40,8 +39,33 @@ public class Data {
     private List<InterviewStatus> lst = new ArrayList<>();
     
     //Load Defintion XML to get lstRecruiter, lstLocators, lstTitles, lstCVUpdate
-    public static void loadDefinitionData() {
-
+    public static void loadDefinitionData() throws SQLException {
+//        DBServer db= new DBServer();
+//        Connection connectdb= db.getConnection();
+//        String connectquery="SELECT * FROM hr.candidate";
+//        Statement st = connectdb.createStatement();
+//        ResultSet rs = st.executeQuery(connectquery);
+//        System.out.println(rs.toString());
+//        while(rs.next()){
+//            int id=rs.getInt(1);
+//            String name=rs.getString(2);
+//            String jobtitle=rs.getString(3);
+//            int year=rs.getInt(4);
+//            String link_src=rs.getString(5);
+//            String skill=rs.getString(6);
+//            String status=rs.getString(7);
+//            String comment=rs.getString(8);
+//            String updBy=rs.getString(9);
+//            String label=rs.getString(10);
+//            String cvDate=rs.getString(11);
+//            String location=rs.getString(12);
+//            String refferal=rs.getString(13);
+//            int phone=rs.getInt(14);
+//            List<InterviewStatus> lst = new ArrayList<>();
+//            CandiidateModel c= new CandiidateModel(id, name, jobtitle, year, link_src, skill, status, comment, updBy, label, cvDate, location, refferal, phone, "false", lst);
+//            lstCandidateModel.add(c);
+//        }
+        //-----------------------------
         lstRecruiterNames.addAll(Arrays.asList("VietNamWork", "ITviet")); //////
         lstLocators.addAll(Arrays.asList("TP HCM", "Da Nang", "Hue"));
         lstStatus.addAll(Arrays.asList("New", "Screening", "Passed screen", "Failed screen", "Approaching", "Reject interview", "Interviewing", "Failed test/interview", "Offering", "Rejected offer", "Accepted offer", "Reject onboard", "Onboard"));

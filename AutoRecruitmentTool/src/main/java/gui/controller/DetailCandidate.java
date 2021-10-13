@@ -23,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import objmodels.CandiidateModel;
 import objmodels.InterviewStatus;
 
@@ -89,7 +90,7 @@ public class DetailCandidate extends BaseController {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       cb_currentStatus.getItems().addAll(FXCollections.observableList(Data.lstStatus));
+        cb_currentStatus.getItems().addAll(FXCollections.observableList(Data.lstStatus));
         initTableViewHistory();
         if (edited == true) {
             Display();
@@ -141,8 +142,9 @@ public class DetailCandidate extends BaseController {
         lbl_jobtitle.setText(cv.getJob());
         input_skills.setText(cv.getSkills());
         input_year.setText(String.valueOf(cv.getExperience()));
-        //input_status.setText(cv.getStatus());
-        cb_currentStatus.getSelectionModel().select(cv.getStatus());
+        //cb_currentStatus.getSelectionModel().select(cv.getStatus());
+
+        cb_currentStatus.setValue(cv.getStatus());
         input_cmt.setText(cv.getComment());
         input_updDate.setText(cv.getCv_date());
         input_location.setText(cv.getCan_location());
@@ -158,8 +160,8 @@ public class DetailCandidate extends BaseController {
         lbl_jobtitle.setText(cv.getJob());
         input_skills.setText(cv.getSkills());
         input_year.setText(String.valueOf(cv.getExperience()));
-        //input_status.setText(cv.getStatus());
-        cb_currentStatus.getSelectionModel().select(cv.getStatus());
+        //cb_currentStatus.getSelectionModel().selectedItemProperty();
+        cb_currentStatus.setValue(cv.getStatus());
         input_cmt.setText(cv.getComment());
         input_updDate.setText(cv.getCv_date());
         input_location.setText(cv.getCan_location());
@@ -171,7 +173,7 @@ public class DetailCandidate extends BaseController {
         //-----------
         input_cmt.setEditable(false);
         input_year.setEditable(false);
-        //input_status.setEditable(false);
+        cb_currentStatus.setEditable(false);
         input_phone.setEditable(false);
         input_updDate.setEditable(false);
         input_referral.setEditable(false);
@@ -181,22 +183,15 @@ public class DetailCandidate extends BaseController {
         input_label.setEditable(false);
         input_location.setEditable(false);
     }
-    
+
     public void Show(String sTitle) throws IOException {
         this.Show(null, sTitle);
-        priStage.setOnCloseRequest(event-> {
+        priStage.setOnCloseRequest(event -> {
             save();
             event.consume();
-            //((MainUI)getInstance("MainUI")).testMethod();  ////
-            ((MainUI)getInstance("MainUI")).refreshCandiateList();
+            ((MainUI) getInstance("MainUI")).refreshCandiateList();
             priStage.close();
         });
-    }
-
-    public void refreshCandiateGUI() {
-        MainUI sc = new MainUI();
-        System.out.println(sc);
-        sc.refreshCandiateList();
     }
 
     public void save() {
@@ -231,6 +226,7 @@ public class DetailCandidate extends BaseController {
         String src = input_src.getText();
         String skills = input_skills.getText();
         String status = cb_currentStatus.getSelectionModel().getSelectedItem();
+
         String comment = input_cmt.getText();
         String updBY = input_updateBy.getText();
         String label = input_label.getText();
@@ -245,12 +241,13 @@ public class DetailCandidate extends BaseController {
     public void EditCandidate(CandiidateModel candidate) {
         if (edited == true) {
             if (cvedit != null) {
+                System.out.println("cvedit: " + cvedit.getStatus());
                 InterviewStatus historystatus = new InterviewStatus(cvedit.getStatus(), cvedit.getComment(), cvedit.getUser(), cvedit.getLabel(), cvedit.getCv_date());
                 candidate.setLstStatus(historystatus);
                 int index = Data.lstCandidateModel.indexOf(cv);
                 Data.lstCandidateModel.set(index, candidate);
-                cvedit=null;
-            }else{
+                cvedit = null;
+            } else {
                 int index = Data.lstCandidateModel.indexOf(cv);
                 Data.lstCandidateModel.set(index, cv);
             }
